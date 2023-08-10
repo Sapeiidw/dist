@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.pegawaiRoute = void 0;
+const express_1 = require("express");
+const pegawaiController_1 = require("../controllers/pegawaiController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const router = (0, express_1.Router)();
+exports.pegawaiRoute = router;
+router.get("/", authMiddleware_1.auth, pegawaiController_1.index);
+router.get("/option", authMiddleware_1.auth, pegawaiController_1.getOption);
+router.get("/:id_pegawai", authMiddleware_1.auth, pegawaiController_1.show);
+router.post("/", authMiddleware_1.auth, pegawaiController_1.store);
+router.patch("/:id_pegawai", authMiddleware_1.auth, pegawaiController_1.update);
+router.delete("/:id_pegawai", authMiddleware_1.auth, pegawaiController_1.destroy);

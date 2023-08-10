@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.pajakRoute = void 0;
+const express_1 = require("express");
+const pajakController_1 = require("../controllers/pajakController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const router = (0, express_1.Router)();
+exports.pajakRoute = router;
+router.get("/", authMiddleware_1.auth, pajakController_1.index);
+router.get("/:id", authMiddleware_1.auth, pajakController_1.show);
+router.post("/", authMiddleware_1.auth, pajakController_1.store);
+router.patch("/:id", authMiddleware_1.auth, pajakController_1.update);
+router.delete("/:id", authMiddleware_1.auth, pajakController_1.destroy);

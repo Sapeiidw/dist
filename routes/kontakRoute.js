@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.kontakRoute = void 0;
+const express_1 = require("express");
+const kontakController_1 = require("../controllers/kontakController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const router = (0, express_1.Router)();
+exports.kontakRoute = router;
+router.get("/", authMiddleware_1.auth, kontakController_1.index);
+router.get("/:id", authMiddleware_1.auth, kontakController_1.show);
+router.post("/", authMiddleware_1.auth, kontakController_1.store);
+router.patch("/:id", authMiddleware_1.auth, kontakController_1.update);
+router.delete("/:id", authMiddleware_1.auth, kontakController_1.destroy);

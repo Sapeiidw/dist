@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.gudangRoute = void 0;
+const express_1 = require("express");
+const gudangController_1 = require("../controllers/gudangController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const router = (0, express_1.Router)();
+exports.gudangRoute = router;
+router.get("/", authMiddleware_1.auth, gudangController_1.index);
+router.get("/:id", authMiddleware_1.auth, gudangController_1.show);
+router.post("/", authMiddleware_1.auth, gudangController_1.store);
+router.patch("/:id", authMiddleware_1.auth, gudangController_1.update);
+router.delete("/:id", authMiddleware_1.auth, gudangController_1.destroy);
